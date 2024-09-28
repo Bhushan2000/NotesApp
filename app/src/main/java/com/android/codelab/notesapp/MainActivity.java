@@ -42,6 +42,8 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 public class MainActivity extends AppCompatActivity implements FirebaseAuth.AuthStateListener, NotesRecyclerAdapter.NoteListener {
 
+    // command for sha1 and sha256 keys
+    // keytool -list -v -keystore "C:\Users\hp\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
     private static final String TAG = "MainActivity";
     RecyclerView recyclerView;
     NotesRecyclerAdapter notesRecyclerAdapter;
@@ -133,13 +135,12 @@ public class MainActivity extends AppCompatActivity implements FirebaseAuth.Auth
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        switch (id) {
-            case R.id.action_logout:
-                AuthUI.getInstance().signOut(this);
-                return true;
-            case R.id.action_profile:
-                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-                return true;
+        if (id == R.id.action_logout) {
+            AuthUI.getInstance().signOut(this);
+            return true;
+        } else if (id == R.id.action_profile) {
+            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

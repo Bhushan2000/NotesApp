@@ -5,13 +5,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    namespace = "com.android.codelab.notesapp"
+
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.android.codelab.notesapp"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
 
